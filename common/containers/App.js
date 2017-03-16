@@ -4,7 +4,6 @@ import Test from '../components/Test';
 import React from 'react';
 
 const TestContainer = ({str}) => {
-  console.log(str);
   return <Test str={str}/>
 };
 
