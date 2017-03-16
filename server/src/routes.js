@@ -2,12 +2,12 @@
  * Contains all application endpoints
  */
 
-import TestController from './controllers/TestController';
+import PersonalityInsightsController from './controllers/PersonalityInsightsController';
 
 export default {
-  '/test': {
+  '/personality-insights': {
     get: {
-      method: TestController.testMethod,
+      method: PersonalityInsightsController.personalityInsight,
       public: true,
     },
   },

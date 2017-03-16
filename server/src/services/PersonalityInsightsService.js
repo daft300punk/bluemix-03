@@ -20,7 +20,7 @@ const personality_insights = new PersonalityInsightsV3({
 });
 
 var params = {
-  content_items: '',
+  content_items: require('./profile.json').contentItems,
   consumption_preferences: true,
   headers: {
     'accept-language': 'en',
