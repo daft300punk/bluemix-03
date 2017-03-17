@@ -1,0 +1,8 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: eu-gb.mybluemix.net
+  name: tc-daft300punk-03social
+  host: tc-daft300punk-03social
+  disk_quota: 2048M
