@@ -14,7 +14,7 @@ export default {
   },
   '/tweets': {
     get: {
-      method: TwitterController.getTweets,
+      method: TwitterController.getTextFromTweets,
       public: true,
     },
   },

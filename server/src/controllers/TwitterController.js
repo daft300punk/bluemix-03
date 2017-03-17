@@ -1,14 +1,16 @@
 import TwitterService from '../services/TwitterService';
 
 export default {
-  getTweets,
+  getTextFromTweets,
 };
 
-async function getTweets(req, res) {
+async function getTextFromTweets(req, res) {
   try {
     const handle = req.query.handle || 'nodejs';
-    const tweets = await TwitterService.getTweetsApi(handle);
-    res.send(tweets);
+    let tweets = await TwitterService.getTweetsApi(handle);
+    tweets = tweets.map(tweets => tweets.text);
+    const tweetsText = tweets.reduce((str1, str2) => (str1 + " " + str2));
+    res.send(tweetsText);
   } catch(err) {
     res.send(err);
   }
