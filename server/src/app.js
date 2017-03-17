@@ -27,7 +27,7 @@ import App from '../../common/containers/App';
 import rootReducer from '../../common/reducers/index';
 
 const app = express();
-app.set('port', 3000);
+app.set('port', config.PORT);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -88,8 +88,10 @@ app.use(notFoundHandler({
   },
 }));
 
-app.listen(app.get('port'), () => {
-  logger.info(`Express server listening on port ${app.get('port')} in ${process.env.NODE_ENV} mode`);
-});
+if(!module.parent) {
+    app.listen(app.get('port'), () => {
+    logger.info(`Express server listening on port ${app.get('port')} in ${process.env.NODE_ENV} mode`);
+  });
+}
 
 export default app;
