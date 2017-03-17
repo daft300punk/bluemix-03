@@ -1,18 +1,16 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Test from '../components/Test';
 import React from 'react';
 import AppBarTitle from '../components/AppBarTitle';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Form from '../components/Form';
 
-const App = ({str}) => (
-  <MuiThemeProvider>
+const App = () => (
+  <div>
     <AppBarTitle />
-  </MuiThemeProvider>
+    <Form />
+  </div>
 );
 
-const mapStateToProps = (state) => ({
-  str: state.test.val
-});
 
-export default connect(mapStateToProps)(App);
+export default connect()(App);
