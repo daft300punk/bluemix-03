@@ -6,7 +6,7 @@ import Joi from 'joi';
 dotenv.config();
 
 const TwitterService = {
-  getTweetsApi,
+  getTextFromTweets,
 };
 
 decorate(TwitterService, 'TwitterService');
@@ -20,17 +20,20 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-function getTweetsApi(handle) {
+function getTextFromTweets(handle) {
   const params = { screen_name: handle };
   return new Promise(function (resolve, reject) {
     client.get('statuses/user_timeline', params, function (err, res) {
       if (err) reject(err);
-      else resolve(res);
+      else {
+        res = res.map(tweets => tweets.text).reduce((str1, str2) => (str1 + ' ' + str2));
+        resolve(res);
+      };
     });
   });
 }
 
-getTweetsApi.params = ['handle'];
-getTweetsApi.schema = {
+getTextFromTweets.params = ['handle'];
+getTextFromTweets.schema = {
   handle: Joi.string(),
 }

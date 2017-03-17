@@ -1,4 +1,5 @@
 import PersonalityInsightsService from '../services/PersonalityInsightsService';
+import TwitterService from '../services/TwitterService';
 
 export default {
   personalityInsight,
@@ -6,7 +7,9 @@ export default {
 
 async function personalityInsight(req, res) {
   try {
-    const insights = await PersonalityInsightsService.getPersonalityInsights();
+    const handle = req.query.handle || 'nodejs';
+    const text = await TwitterService.getTextFromTweets(handle);
+    const insights = await PersonalityInsightsService.getPersonalityInsights(text);
     res.send(insights);
   } catch(err) {
     const err_msg = `Error Code: ${err.error_code} <br> Error Message: ${err.error_message}`;
