@@ -4,13 +4,26 @@ import React from 'react';
 import AppBarTitle from '../components/AppBarTitle';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Form from '../components/Form';
+import Result from '../components/Result';
+import fetchInsight from '../actions';
 
-const App = () => (
+const App = ({ personalityInsights, onSubmitClicked }) => (
   <div>
     <AppBarTitle />
-    <Form />
+    <Form onSubmitClicked={onSubmitClicked}/>
+    <Result personalityInsights={personalityInsights} />
   </div>
 );
 
+const mapStateToProps = (state) => ({
+  personalityInsights: state.personalityInsights.items,
+});
 
-export default connect()(App);
+const mapDispatchToProps = (dispatch) => ({
+  onSubmitClicked: (handle) => dispatch(fetchInsight(handle)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
