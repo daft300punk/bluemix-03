@@ -26,6 +26,8 @@ import configureStore from '../../common/store/configureStore';
 import App from '../../common/containers/App';
 import rootReducer from '../../common/reducers/index';
 
+global.navigator = { userAgent: 'all' };
+
 const app = express();
 app.set('port', config.PORT);
 

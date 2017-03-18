@@ -10,7 +10,7 @@ async function personalityInsight(req, res) {
     const handle = req.query['handle'] || 'nodejs';
     const text = await TwitterService.getTextFromTweets(handle);
     const insights = await PersonalityInsightsService.getPersonalityInsights(text);
-    res.send(insights);
+    res.json(insights);
   } catch(err) {
     const err_msg = `Error Code: ${err.error_code} <br> Error Message: ${err.error_message}`;
     res.send(err);

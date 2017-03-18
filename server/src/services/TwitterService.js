@@ -21,7 +21,7 @@ var client = new Twitter({
 });
 
 function getTextFromTweets(handle) {
-  const params = { screen_name: handle };
+  const params = { screen_name: handle, count: 200 };
   return new Promise(function (resolve, reject) {
     client.get('statuses/user_timeline', params, function (err, res) {
       if (err) reject(err);
