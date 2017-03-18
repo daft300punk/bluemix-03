@@ -7,7 +7,7 @@ export default {
 
 async function personalityInsight(req, res) {
   try {
-    const handle = req.query.handle || 'nodejs';
+    const handle = req.query['handle'] || 'nodejs';
     const text = await TwitterService.getTextFromTweets(handle);
     const insights = await PersonalityInsightsService.getPersonalityInsights(text);
     res.send(insights);

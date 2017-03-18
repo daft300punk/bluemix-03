@@ -19,10 +19,14 @@ const Form = () => (
     <MuiThemeProvider>
       <Paper zDepth={1} style={stylePaper}>
         <p>Enter the twitter handle of Personality you want to analyze</p>
-        <form>
+        <form method="get" action="/api/personality-insights" id="form">
           <TextField
             hintText="Twitter hanlde"
             required
+            type="text"
+            underlineShow={true}
+            name="handle"
+            form="form"
           />
           <br />
           <RaisedButton label="Submit" primary={true} type="Submit" />

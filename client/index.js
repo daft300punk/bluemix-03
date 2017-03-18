@@ -13,7 +13,7 @@ const rootElement = document.getElementById('app');
 
 render(
   <Provider store={store}>
-    <App style={clearStyle} />
+    <App />
   </Provider>,
   rootElement
 );
