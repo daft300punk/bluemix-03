@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import test from './test';
+import personalityInsights from './personalityInsights';
 
 const rootReducer = combineReducers({
-  test
+  personalityInsights
 });
 
 export default rootReducer;
