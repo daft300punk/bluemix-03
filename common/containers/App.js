@@ -4,14 +4,14 @@ import React from 'react';
 import AppBarTitle from '../components/AppBarTitle';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Form from '../components/Form';
-import Result from '../components/Result';
+import ResultList from '../components/ResultList';
 import fetchInsight from '../actions';
 
 const App = ({ personalityInsights, onSubmitClicked }) => (
   <div>
     <AppBarTitle />
     <Form onSubmitClicked={onSubmitClicked}/>
-    <Result personalityInsights={personalityInsights} />
+    <ResultList personalityInsights={personalityInsights} />
   </div>
 );
 
