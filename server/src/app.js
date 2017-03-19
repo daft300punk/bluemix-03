@@ -1,3 +1,4 @@
+require('babel-register');
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
@@ -25,11 +26,17 @@ import { createStore } from 'redux';
 import configureStore from '../../common/store/configureStore';
 import App from '../../common/containers/App';
 import rootReducer from '../../common/reducers/index';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 
 global.navigator = { userAgent: 'all' };
 
 const app = express();
 app.set('port', config.PORT);
+
+const compiler = webpack(webpackConfig);
+app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: webpackConfig.output.publicPath }));
+app.use(webpackHotMiddleware(compiler));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -43,17 +50,17 @@ loadRoutes(apiRouter, routes);
 
 app.use('/api', apiRouter);
 
-const compiler = webpack(webpackConfig);
-app.use(webpackDevMiddleware(compiler, {noInfo: true, publicPath: webpackConfig.output.publicPath }));
-app.use(webpackHotMiddleware(compiler));
-
 app.use(handleRender);
+
+injectTapEventPlugin();
 
 function handleRender(req, res) {
   const store = createStore(rootReducer);
   const html = renderToString(
     <Provider store={store}>
-      <App />
+      <MuiThemeProvider>
+        <App />
+      </MuiThemeProvider>
     </Provider>
   );
   const preloadedState = store.getState();
@@ -65,10 +72,10 @@ function renderFullPage(html, preloadedState) {
     <!doctype html>
     <html>
       <head>
-        <title>Redux Universal Example</title>
+        <title>Topcoder Bluemix Challenge 03</title>
       </head>
       <body style="padding: 0; margin: 0;">
-        <div id="app">${html}</div>
+        <div id="app"><div>${html}</div></div>
         <script>
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\x3c')}
         </script>

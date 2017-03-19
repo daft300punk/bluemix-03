@@ -9,7 +9,6 @@ export const fetchInsightApi = (handle) => {
           values: res.values.map((val) => ({ name: val.name, percentile: val.percentile })),
           personality: res.values.map((val) => ({ name: val.name, percentile: val.percentile }))
         };
-        console.log(personalityInsight);
         resolve(personalityInsight);
       })
       .catch(err => reject(err));

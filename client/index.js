@@ -4,16 +4,20 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from '../common/store/configureStore';
 import App from '../common/containers/App';
-import { testAction } from '../common/actions/index';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const preloadedState = window.__PRELOADED_STATE__;
 const store = configureStore(preloadedState);
 
 const rootElement = document.getElementById('app');
 
+injectTapEventPlugin();
 render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>
   </Provider>,
   rootElement
 );

@@ -3,6 +3,6 @@ applications:
   memory: 512M
   instances: 1
   domain: eu-gb.mybluemix.net
-  name: tc-daft300punk-03social
-  host: tc-daft300punk-03social
+  name: tc-daft300punk-003social
+  host: tc-daft300punk-003social
   disk_quota: 2048M

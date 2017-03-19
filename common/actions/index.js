@@ -8,10 +8,10 @@ const fetchInsightRequest = (handle) => ({
 
 const fetchInsightSuccess = (result) => ({
   type: ActionTypes.FETCH_INSIGHT_SUCCESS,
-  insight: result,
+  insights: result,
 });
 
-const fetchInsightFailure = (result) => ({
+const fetchInsightFailure = (error) => ({
   type: ActionTypes.FETCH_INSIGHT_FAILURE,
   error: error,
 });
@@ -22,3 +22,5 @@ const fetchInsight = (handle) => (dispatch) => {
   .then(insight => dispatch(fetchInsightSuccess(insight)))
   .catch(err => dispatch(fetchInsightFailure(err)));
 }
+
+export default fetchInsight;
