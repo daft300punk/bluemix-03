@@ -27,7 +27,7 @@ const ResultList = ({ personalityInsights }) => {
     marginRight: '10px',
     marginBottom: '24px'
   }
-
+  document.getElementById("form").reset();
   return (
     <div style={styleDiv}>
       <h2>Results</h2>

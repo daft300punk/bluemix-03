@@ -10,7 +10,8 @@ const personalityInsights = (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.FETCH_INSIGHT_REQUEST:
       return Object.assign({}, state, {
-        fetching: true
+        fetching: true,
+        items: null
       });
     case actionTypes.FETCH_INSIGHT_SUCCESS:
       return Object.assign({}, state, {

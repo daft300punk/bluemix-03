@@ -24,7 +24,7 @@ function getTextFromTweets(handle) {
   const params = { screen_name: handle, count: 200 };
   return new Promise(function (resolve, reject) {
     client.get('statuses/user_timeline', params, function (err, res) {
-      if (err) reject(err);
+      if (err) reject(255);
       else {
         res = res.map(tweets => tweets.text).reduce((str1, str2) => (str1 + ' ' + str2));
         resolve(res);

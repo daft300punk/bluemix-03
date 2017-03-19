@@ -13,6 +13,6 @@ async function personalityInsight(req, res) {
     res.json(insights);
   } catch(err) {
     const err_msg = `Error Code: ${err.error_code} <br> Error Message: ${err.error_message}`;
-    res.send(err);
+    res.json(err);
   }
 }

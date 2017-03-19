@@ -18,17 +18,19 @@ const Form = ({ onSubmitClicked }) => {
     <div style={styleWrap}>
       <Paper zDepth={1} style={stylePaper}>
         <p>Enter the twitter handle of Personality you want to analyze</p>
-        <TextField
-          hintText="Twitter hanlde"
-          required
-          type="text"
-          underlineShow={true}
-          name="handle"
-          value={input}
-          onChange={(e) => { input = e.target.value }}
-        />
-        <br />
-        <RaisedButton label="Submit" primary={true} onClick={() => onSubmitClicked(input)} />
+        <form id="form">
+          <TextField
+            hintText="Twitter hanlde"
+            required
+            type="text"
+            underlineShow={true}
+            name="handle"
+            value={input}
+            onChange={(e) => { input = e.target.value }}
+          />
+          <br />
+          <RaisedButton label="Submit" primary={true} onClick={() => {onSubmitClicked(input); return false;}}/>
+        </form>
       </Paper>
     </div>
   );

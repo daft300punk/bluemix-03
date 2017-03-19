@@ -4,7 +4,8 @@ export const fetchInsightApi = (handle) => {
     fetch(url)
       .then(res => res.json())
       .then(res => {
-        console.log(res);
+        if(res === 255)
+          throw 'Error with Twitter. Handle might not exist!';
         let personalityInsight = {
           items: {
             needs: res.needs.map((val) => ({ name: val.name, percentile: val.percentile })),
@@ -16,6 +17,6 @@ export const fetchInsightApi = (handle) => {
         };
         resolve(personalityInsight);
       })
-      .catch(err => reject(err));
+      .catch(err => {console.log(err); reject(err)});
   });
 };
